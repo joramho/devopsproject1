@@ -1,8 +1,8 @@
 pipeline {
-    agent any
-    tools {
-        nodejs 'node18'
+    agent {
+        docker 'jenkins-lts-jdk17-node18'
     }
+
     stages {
         stage('Checkout') {
             steps {

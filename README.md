@@ -6,8 +6,9 @@ https://www.docker.com/products/docker-desktop/
 ```
 Spin up a server: (Access from local host http://localhost:8080)
 ```
-docker network create Jenkins
-docker run --name jenkins-blueocean --rm -d -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home --network jenkins jenkins/jenkins:lts-jdk17
+docker run -d -p 8080:8080 -p 50000:50000 \
+  -v jenkins_home:/var/jenkins_home \
+  jenkins/jenkins:lts-jdk17-node18
 ```
 Get Initial admin password: 
 ```

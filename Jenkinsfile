@@ -1,45 +1,25 @@
 pipeline {
-    agent {
-        docker 'jenkins-lts-jdk17-node18'
-    }
-
-
+    agent any
     stages {
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
-
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
-
         stage('Build') {
             steps {
-                sh 'npm run build || echo "No build script found"'
+                sh 'npm install' // or 'pip install -r requirements.txt'
             }
         }
-
         stage('Test') {
             steps {
-                sh 'npm test || echo "No test script found"'
+                sh 'npm test' // or 'pytest --junitxml=test-results.xml'
             }
         }
     }
-
     post {
         always {
-            echo 'Cleaning up workspace'
-            cleanWs()
-        }
-        success {
-            echo 'Build succeeded!'
-        }
-        failure {
-            echo 'Build failed!'
+            junit 'test-results.xml' // optional for Node/Python
         }
     }
 }

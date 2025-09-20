@@ -24,4 +24,9 @@ Create Pipeline job in Jenkins
 ```
 name: simple-ci-cd
 ```
+Configure
 Select pipeline from SCM under definition
+Select Pipeline from SCM → Git → Enter your repo URL.
+Branch: main.
+Script Path: Jenkinsfile.
+Save → Build Now.

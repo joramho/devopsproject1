@@ -6,7 +6,7 @@ https://www.docker.com/products/docker-desktop/
 ```
 Spin up a server: (Access from local host http://localhost:8080)
 ```
-docker network create joram
+docker network create jenkins
 docker run -d --name jenkins-blueocean \
   -p 8080:8080 -p 50000:50000 \
   -v jenkins_home:/var/jenkins_home \
@@ -20,6 +20,8 @@ Create Github repo and set up webhook ( since I did it locally, I need to use ng
 ```
 ngrok http http://localhost:8080
 ```
+
+Push sample app to github repo: (node-app, python-app)
 
 Create Jenkinsfile (see Jenkinsfile)
 

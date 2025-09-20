@@ -1,21 +1,13 @@
 pipeline {
-    // Use a Node.js Docker image so Jenkins doesn't need Node installed
-    agent {
-        docker {
-            image 'node:18'
-            args '-u root:root' // optional: run as root inside container
-        }
-    }
+    agent any  // Run directly in the Jenkins container
 
     environment {
-        // Optional: add environment variables here
         NODE_ENV = 'development'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                // Pull the code from your Git repository
                 checkout scm
             }
         }
@@ -28,7 +20,6 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Replace with your build command if needed
                 sh 'npm run build || echo "No build script found"'
             }
         }

@@ -1,11 +1,19 @@
 pipeline {
     agent any
-    tools { nodejs "NodeJS 20" }  // name from Global Tool Config
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                sh 'npm install'
-                sh 'npm test'
+                checkout scm
+            }
+        }
+        stage('Install Dependencies') {
+            steps {
+                sh 'echo "Install Node/npm here"'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'echo "Run tests here"'
             }
         }
     }

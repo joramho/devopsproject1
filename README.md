@@ -14,3 +14,14 @@ Get Initial admin password:
 docker exec jenkins-blueocean cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 Create Github repo and set up webhook ( since I did it locally, I need to use ngrok to expose a public url instead of localhost:8080)
+```
+ngrok http http://localhost:8080
+```
+
+Create Jenkinsfile (see Jenkinsfile)
+
+Create Pipeline job in Jenkins
+```
+name: simple-ci-cd
+```
+Select pipeline from SCM under definition

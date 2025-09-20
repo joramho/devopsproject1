@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:18-alpine'
-            args '-u root:root'   // ensures npm can write to workspace
-        }
-    }
+    agent any
     stages {
         stage('Install Dependencies') {
             steps {

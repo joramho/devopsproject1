@@ -1,8 +1,6 @@
 pipeline {
     agent any
-    tools {
-        nodejs 'node22'
-    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -18,12 +16,6 @@ pipeline {
             steps {
                 sh 'npm test'
             }
-        }
-    }
-
-    post {
-        always {
-            archiveArtifacts artifacts: '**/test-results.xml', allowEmptyArchive: true
         }
     }
 }

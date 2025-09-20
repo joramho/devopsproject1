@@ -1,15 +1,13 @@
 pipeline {
     agent any
+    tools { nodejs 'NodeJS 22' }
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-        stage('Install Dependencies') {
+        stage('Build') {
             steps {
                 sh 'npm install'
+                sh 'npm test'
             }
         }
     }
 }
+

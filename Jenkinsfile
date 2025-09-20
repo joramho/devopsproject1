@@ -1,25 +1,21 @@
 pipeline {
-    agent any
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
+    agent {
+        docker {
+            image 'node:18-alpine'
+            args '-u root:root'   // ensures npm can write to workspace
         }
-        stage('Build') {
+    }
+    stages {
+        stage('Install Dependencies') {
             steps {
-                sh 'npm install' // or 'pip install -r requirements.txt'
+                sh 'npm install'
             }
         }
         stage('Test') {
             steps {
-                sh 'npm test' // or 'pytest --junitxml=test-results.xml'
+                sh 'npm test'
             }
         }
     }
-    post {
-        always {
-            junit 'test-results.xml' // optional for Node/Python
-        }
-    }
 }
+

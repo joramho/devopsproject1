@@ -1,4 +1,4 @@
-# Devops Project 1
+# Devops Project 1 CI/CD Simple App
 
 Install Docker:
 ```

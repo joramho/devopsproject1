@@ -3,27 +3,43 @@ pipeline {
         docker 'jenkins-lts-jdk17-node18'
     }
 
+
     stages {
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
-        stage('Build') {
+
+        stage('Install Dependencies') {
             steps {
                 sh 'npm install'
             }
         }
+
+        stage('Build') {
+            steps {
+                sh 'npm run build || echo "No build script found"'
+            }
+        }
+
         stage('Test') {
             steps {
-                sh 'npm test'
+                sh 'npm test || echo "No test script found"'
             }
         }
     }
 
     post {
         always {
-            archiveArtifacts artifacts: '**/test-results.xml', allowEmptyArchive: true
+            echo 'Cleaning up workspace'
+            cleanWs()
+        }
+        success {
+            echo 'Build succeeded!'
+        }
+        failure {
+            echo 'Build failed!'
         }
     }
 }

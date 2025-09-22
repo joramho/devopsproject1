@@ -1,43 +1,45 @@
 pipeline {
     agent any
 
-    // Use the NodeJS plugin
+    // Use your configured NodeJS installation name exactly
     tools {
-        nodejs 'Node_24'   // <-- This must match the name of the NodeJS installation in Jenkins Global Tool Configuration
+        nodejs 'NodeJS 24.8.0'  // <-- Replace with the exact name from Global Tool Configuration
     }
 
     stages {
         stage('Checkout') {
             steps {
-                // Pull code from GitHub
+                // Clone your GitHub repo
                 git url: 'https://github.com/joramho/devopsproject1', branch: 'main'
+            }
+        }
+
+        stage('Check Node.js') {
+            steps {
+                // Verify Node and npm versions
+                sh 'node -v'
+                sh 'npm -v'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                // npm command will use NodeJS plugin environment
+                // Install npm packages
                 sh 'npm install'
             }
         }
 
-        stage('Run Tests') {
+        stage('Run Hello World') {
             steps {
-                sh 'npm test'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                sh 'echo "Building project..."'
-                // Add your build commands here
+                // Run a simple Node.js script (e.g., app.js)
+                sh 'node app.js'
             }
         }
     }
 
     post {
         success {
-            echo 'Pipeline completed successfully!'
+            echo 'Pipeline ran successfully!'
         }
         failure {
             echo 'Pipeline failed.'

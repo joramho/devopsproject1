@@ -1,0 +1,12 @@
+{
+  "name": "hello-node",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^30.1.3"
+  }
+}

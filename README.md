@@ -10,7 +10,7 @@ docker network create jenkins
 docker run -d --name jenkins-blueocean \
   -p 8080:8080 -p 50000:50000 \
   -v jenkins_home:/var/jenkins_home \
-  jenkins/jenkins:lts-jdk17
+  jenkins/jenkins:lts
 ```
 Get Initial admin password: 
 ```
@@ -21,7 +21,7 @@ Create Github repo and set up webhook ( since I did it locally, I need to use ng
 ngrok http http://localhost:8080
 ```
 
-Push sample app to github repo: (node-app, python-app)
+Push sample app to github repo: (hello-node)
 
 Create Jenkinsfile (see Jenkinsfile)
 

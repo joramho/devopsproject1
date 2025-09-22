@@ -4,9 +4,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git (
-                    url: 'https://github.com/joramho/hello-jenkins-node.git'
-                ) 
+                url: 'https://github.com/joramho/devopsproject1'
+                credentialsId: 'jenkins'
             }
         }
 

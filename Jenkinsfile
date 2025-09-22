@@ -6,6 +6,7 @@ pipeline {
             steps {
                 git(
                     url: 'https://github.com/joramho/devopsproject1',
+                    branch: 'main',
                     credentialsId: 'jenkins'
                 )
             }

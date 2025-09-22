@@ -6,7 +6,6 @@ pipeline {
             steps {
                 git (
                     url: 'https://github.com/joramho/hello-jenkins-node.git'
-                    credentialsId: '8591430d-3dd6-454a-bad0-2bde53f9cb83'
                 ) 
             }
         }

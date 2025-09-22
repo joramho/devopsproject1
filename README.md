@@ -28,6 +28,10 @@ set up webhook (since I did it locally, I need to use ngrok to expose a public u
 ```
 ngrok http http://localhost:8080
 ```
+add URL (example below)
+```
+https://fb6de5e1c758.ngrok-free.app/github-webhook/
+```
 
 Push hello-world app to github repo: (app.js/app.test.js)
 

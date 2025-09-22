@@ -1,22 +1,16 @@
 pipeline {
     agent any
 
-    // Use your configured NodeJS installation name exactly
-    tools {
-        nodejs 'Node 20'  // <-- Replace with the exact name from Global Tool Configuration
-    }
-
     stages {
         stage('Checkout') {
             steps {
-                // Clone your GitHub repo
-                git url: 'https://github.com/joramho/devopsproject1', branch: 'main'
+                // If using GitHub, replace URL below with your repo
+                git 'https://github.com/joramho/hello-jenkins-node.git'
             }
         }
 
         stage('Check Node.js') {
             steps {
-                // Verify Node and npm versions
                 sh 'node -v'
                 sh 'npm -v'
             }
@@ -24,14 +18,12 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                // Install npm packages
                 sh 'npm install'
             }
         }
 
-        stage('Run Hello World') {
+        stage('Run App') {
             steps {
-                // Run a simple Node.js script (e.g., app.js)
                 sh 'node app.js'
             }
         }

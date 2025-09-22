@@ -12,6 +12,13 @@ pipeline {
             }
         }
 
+        stage('Check Workspace') {
+            steps {
+                sh 'pwd'
+                sh 'ls -la'
+            }
+        }
+
         stage('Check Node.js') {
             steps {
                 sh 'node -v'

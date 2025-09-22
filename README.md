@@ -1,4 +1,4 @@
-# Devops Project 1 CI/CD Simple App
+# Devops Project 1 CI/CD Simple Hello World App
 
 Install Docker:
 ```
@@ -16,18 +16,28 @@ Get Initial admin password:
 ```
 docker exec jenkins-blueocean cat /var/jenkins_home/secrets/initialAdminPassword
 ```
-Create Github repo and set up webhook ( since I did it locally, I need to use ngrok to expose a public url instead of localhost:8080)
+Create Jenkins Account, install recommended plugins
+
+Create Github repo
+
+create a classic personal access token to allow checkout of repo from jenkins
+
+attach token to jenkins global credentials
+
+set up webhook (since I did it locally, I need to use ngrok to expose a public url instead of localhost:8080)
 ```
 ngrok http http://localhost:8080
 ```
 
-Push sample app to github repo: (hello-node)
+Push hello-world app to github repo: (app.js/app.test.js)
+
+* make sure package.json file is in root
 
 Create Jenkinsfile (see Jenkinsfile)
 
-Create Pipeline job in Jenkins
+Create Pipeline in Jenkins
 ```
-name: simple-ci-cd
+name: hello-world
 ```
 Configure
 Select pipeline from SCM under definition

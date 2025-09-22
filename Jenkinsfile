@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                // Personal Access Token stored in Jenkins credentials with ID 'jenkins'
                 git(
                     url: 'https://github.com/joramho/devopsproject1',
                     branch: 'main',
@@ -11,7 +12,7 @@ pipeline {
                 )
             }
         }
-
+        // verifies workspace location and files for debugging
         stage('Check Workspace') {
             steps {
                 sh 'pwd'

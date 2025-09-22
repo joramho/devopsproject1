@@ -3,7 +3,7 @@ pipeline {
 
     // Use your configured NodeJS installation name exactly
     tools {
-        nodejs 'NodeJS 24.8.0'  // <-- Replace with the exact name from Global Tool Configuration
+        nodejs 'Node 20'  // <-- Replace with the exact name from Global Tool Configuration
     }
 
     stages {

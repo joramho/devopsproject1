@@ -4,8 +4,10 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // If using GitHub, replace URL below with your repo
-                git 'https://github.com/joramho/hello-jenkins-node.git'
+                git (
+                    url: 'https://github.com/joramho/hello-jenkins-node.git'
+                    credentialsId: '8591430d-3dd6-454a-bad0-2bde53f9cb83'
+                ) 
             }
         }
 
